@@ -1,0 +1,356 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.huice.dao.old.OldUserDetailMapper">
+  <resultMap id="BaseResultMap" type="com.huice.model.old.OldUserDetail">
+    <constructor>
+      <idArg column="id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="user_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="shop_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="username" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="sex" javaType="java.lang.String" jdbcType="CHAR" />
+      <arg column="birthday_year" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="birthday_month" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="birthday_day" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="email" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="real_name" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="province_code" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="city_code" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="district_code" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="address" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="marital_status" javaType="java.lang.Boolean" jdbcType="BIT" />
+      <arg column="monthly_income" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="cid" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="education" javaType="java.lang.Boolean" jdbcType="BIT" />
+      <arg column="industry_info" javaType="java.lang.Boolean" jdbcType="BIT" />
+      <arg column="big_image" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="bank_user_name" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="shop_bank" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="bank_no" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="withdraw_passwd" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="user_avatar" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="create_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="update_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, user_id, shop_id, username, sex, birthday_year, birthday_month, birthday_day, 
+    email, real_name, province_code, city_code, district_code, address, marital_status, 
+    monthly_income, cid, education, industry_info, big_image, bank_user_name, shop_bank, 
+    bank_no, withdraw_passwd, user_avatar, create_time, update_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from b2c_user_detail
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from b2c_user_detail
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.huice.model.old.OldUserDetail">
+    insert into b2c_user_detail (id, user_id, shop_id, 
+      username, sex, birthday_year, 
+      birthday_month, birthday_day, email, 
+      real_name, province_code, city_code, 
+      district_code, address, marital_status, 
+      monthly_income, cid, education, 
+      industry_info, big_image, bank_user_name, 
+      shop_bank, bank_no, withdraw_passwd, 
+      user_avatar, create_time, update_time
+      )
+    values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{shopId,jdbcType=INTEGER}, 
+      #{username,jdbcType=VARCHAR}, #{sex,jdbcType=CHAR}, #{birthdayYear,jdbcType=INTEGER}, 
+      #{birthdayMonth,jdbcType=INTEGER}, #{birthdayDay,jdbcType=INTEGER}, #{email,jdbcType=VARCHAR}, 
+      #{realName,jdbcType=VARCHAR}, #{provinceCode,jdbcType=INTEGER}, #{cityCode,jdbcType=INTEGER}, 
+      #{districtCode,jdbcType=INTEGER}, #{address,jdbcType=VARCHAR}, #{maritalStatus,jdbcType=BIT}, 
+      #{monthlyIncome,jdbcType=INTEGER}, #{cid,jdbcType=VARCHAR}, #{education,jdbcType=BIT}, 
+      #{industryInfo,jdbcType=BIT}, #{bigImage,jdbcType=VARCHAR}, #{bankUserName,jdbcType=VARCHAR}, 
+      #{shopBank,jdbcType=VARCHAR}, #{bankNo,jdbcType=VARCHAR}, #{withdrawPasswd,jdbcType=VARCHAR}, 
+      #{userAvatar,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.huice.model.old.OldUserDetail">
+    insert into b2c_user_detail
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="shopId != null">
+        shop_id,
+      </if>
+      <if test="username != null">
+        username,
+      </if>
+      <if test="sex != null">
+        sex,
+      </if>
+      <if test="birthdayYear != null">
+        birthday_year,
+      </if>
+      <if test="birthdayMonth != null">
+        birthday_month,
+      </if>
+      <if test="birthdayDay != null">
+        birthday_day,
+      </if>
+      <if test="email != null">
+        email,
+      </if>
+      <if test="realName != null">
+        real_name,
+      </if>
+      <if test="provinceCode != null">
+        province_code,
+      </if>
+      <if test="cityCode != null">
+        city_code,
+      </if>
+      <if test="districtCode != null">
+        district_code,
+      </if>
+      <if test="address != null">
+        address,
+      </if>
+      <if test="maritalStatus != null">
+        marital_status,
+      </if>
+      <if test="monthlyIncome != null">
+        monthly_income,
+      </if>
+      <if test="cid != null">
+        cid,
+      </if>
+      <if test="education != null">
+        education,
+      </if>
+      <if test="industryInfo != null">
+        industry_info,
+      </if>
+      <if test="bigImage != null">
+        big_image,
+      </if>
+      <if test="bankUserName != null">
+        bank_user_name,
+      </if>
+      <if test="shopBank != null">
+        shop_bank,
+      </if>
+      <if test="bankNo != null">
+        bank_no,
+      </if>
+      <if test="withdrawPasswd != null">
+        withdraw_passwd,
+      </if>
+      <if test="userAvatar != null">
+        user_avatar,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="shopId != null">
+        #{shopId,jdbcType=INTEGER},
+      </if>
+      <if test="username != null">
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        #{sex,jdbcType=CHAR},
+      </if>
+      <if test="birthdayYear != null">
+        #{birthdayYear,jdbcType=INTEGER},
+      </if>
+      <if test="birthdayMonth != null">
+        #{birthdayMonth,jdbcType=INTEGER},
+      </if>
+      <if test="birthdayDay != null">
+        #{birthdayDay,jdbcType=INTEGER},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="realName != null">
+        #{realName,jdbcType=VARCHAR},
+      </if>
+      <if test="provinceCode != null">
+        #{provinceCode,jdbcType=INTEGER},
+      </if>
+      <if test="cityCode != null">
+        #{cityCode,jdbcType=INTEGER},
+      </if>
+      <if test="districtCode != null">
+        #{districtCode,jdbcType=INTEGER},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="maritalStatus != null">
+        #{maritalStatus,jdbcType=BIT},
+      </if>
+      <if test="monthlyIncome != null">
+        #{monthlyIncome,jdbcType=INTEGER},
+      </if>
+      <if test="cid != null">
+        #{cid,jdbcType=VARCHAR},
+      </if>
+      <if test="education != null">
+        #{education,jdbcType=BIT},
+      </if>
+      <if test="industryInfo != null">
+        #{industryInfo,jdbcType=BIT},
+      </if>
+      <if test="bigImage != null">
+        #{bigImage,jdbcType=VARCHAR},
+      </if>
+      <if test="bankUserName != null">
+        #{bankUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="shopBank != null">
+        #{shopBank,jdbcType=VARCHAR},
+      </if>
+      <if test="bankNo != null">
+        #{bankNo,jdbcType=VARCHAR},
+      </if>
+      <if test="withdrawPasswd != null">
+        #{withdrawPasswd,jdbcType=VARCHAR},
+      </if>
+      <if test="userAvatar != null">
+        #{userAvatar,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.huice.model.old.OldUserDetail">
+    update b2c_user_detail
+    <set>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="shopId != null">
+        shop_id = #{shopId,jdbcType=INTEGER},
+      </if>
+      <if test="username != null">
+        username = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        sex = #{sex,jdbcType=CHAR},
+      </if>
+      <if test="birthdayYear != null">
+        birthday_year = #{birthdayYear,jdbcType=INTEGER},
+      </if>
+      <if test="birthdayMonth != null">
+        birthday_month = #{birthdayMonth,jdbcType=INTEGER},
+      </if>
+      <if test="birthdayDay != null">
+        birthday_day = #{birthdayDay,jdbcType=INTEGER},
+      </if>
+      <if test="email != null">
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="realName != null">
+        real_name = #{realName,jdbcType=VARCHAR},
+      </if>
+      <if test="provinceCode != null">
+        province_code = #{provinceCode,jdbcType=INTEGER},
+      </if>
+      <if test="cityCode != null">
+        city_code = #{cityCode,jdbcType=INTEGER},
+      </if>
+      <if test="districtCode != null">
+        district_code = #{districtCode,jdbcType=INTEGER},
+      </if>
+      <if test="address != null">
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="maritalStatus != null">
+        marital_status = #{maritalStatus,jdbcType=BIT},
+      </if>
+      <if test="monthlyIncome != null">
+        monthly_income = #{monthlyIncome,jdbcType=INTEGER},
+      </if>
+      <if test="cid != null">
+        cid = #{cid,jdbcType=VARCHAR},
+      </if>
+      <if test="education != null">
+        education = #{education,jdbcType=BIT},
+      </if>
+      <if test="industryInfo != null">
+        industry_info = #{industryInfo,jdbcType=BIT},
+      </if>
+      <if test="bigImage != null">
+        big_image = #{bigImage,jdbcType=VARCHAR},
+      </if>
+      <if test="bankUserName != null">
+        bank_user_name = #{bankUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="shopBank != null">
+        shop_bank = #{shopBank,jdbcType=VARCHAR},
+      </if>
+      <if test="bankNo != null">
+        bank_no = #{bankNo,jdbcType=VARCHAR},
+      </if>
+      <if test="withdrawPasswd != null">
+        withdraw_passwd = #{withdrawPasswd,jdbcType=VARCHAR},
+      </if>
+      <if test="userAvatar != null">
+        user_avatar = #{userAvatar,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.huice.model.old.OldUserDetail">
+    update b2c_user_detail
+    set user_id = #{userId,jdbcType=INTEGER},
+      shop_id = #{shopId,jdbcType=INTEGER},
+      username = #{username,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=CHAR},
+      birthday_year = #{birthdayYear,jdbcType=INTEGER},
+      birthday_month = #{birthdayMonth,jdbcType=INTEGER},
+      birthday_day = #{birthdayDay,jdbcType=INTEGER},
+      email = #{email,jdbcType=VARCHAR},
+      real_name = #{realName,jdbcType=VARCHAR},
+      province_code = #{provinceCode,jdbcType=INTEGER},
+      city_code = #{cityCode,jdbcType=INTEGER},
+      district_code = #{districtCode,jdbcType=INTEGER},
+      address = #{address,jdbcType=VARCHAR},
+      marital_status = #{maritalStatus,jdbcType=BIT},
+      monthly_income = #{monthlyIncome,jdbcType=INTEGER},
+      cid = #{cid,jdbcType=VARCHAR},
+      education = #{education,jdbcType=BIT},
+      industry_info = #{industryInfo,jdbcType=BIT},
+      big_image = #{bigImage,jdbcType=VARCHAR},
+      bank_user_name = #{bankUserName,jdbcType=VARCHAR},
+      shop_bank = #{shopBank,jdbcType=VARCHAR},
+      bank_no = #{bankNo,jdbcType=VARCHAR},
+      withdraw_passwd = #{withdrawPasswd,jdbcType=VARCHAR},
+      user_avatar = #{userAvatar,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

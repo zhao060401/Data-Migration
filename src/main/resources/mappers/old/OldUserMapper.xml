@@ -1,0 +1,549 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.huice.dao.old.OldUserMapper">
+  <resultMap id="BaseResultMap" type="com.huice.model.old.OldUser">
+    <constructor>
+      <idArg column="user_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="shop_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="username" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="user_pwd" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="user_cid" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="mobile" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="user_code" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="wx_openid" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="email" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="create_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="update_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="wechat" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="fanli_grade" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="user_grade" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="invite" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="invite_source" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="invitation_code" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="account" javaType="java.math.BigDecimal" jdbcType="DECIMAL" />
+      <arg column="discount" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="discount_grade" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="del_flag" javaType="java.lang.Boolean" jdbcType="BIT" />
+      <arg column="del_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="growth" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="score" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="source" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="invite_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="invite_expiry_date" javaType="java.util.Date" jdbcType="DATE" />
+      <arg column="wx_union_id" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="is_distributor" javaType="java.lang.Byte" jdbcType="TINYINT" />
+      <arg column="invite_act_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="distributor_level" javaType="java.lang.Byte" jdbcType="TINYINT" />
+      <arg column="ali_user_id" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="device" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="invite_protect_date" javaType="java.util.Date" jdbcType="DATE" />
+      <arg column="look_collect_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="get_collect_gift" javaType="java.lang.Boolean" jdbcType="BIT" />
+      <arg column="invite_group" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="unit_price" javaType="java.math.BigDecimal" jdbcType="DECIMAL" />
+      <arg column="invite_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="scene" javaType="java.lang.Integer" jdbcType="INTEGER" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List">
+    user_id, shop_id, username, user_pwd, user_cid, mobile, user_code, wx_openid, email, 
+    create_time, update_time, wechat, fanli_grade, user_grade, invite, invite_source, 
+    invitation_code, account, discount, discount_grade, del_flag, del_time, growth, score, 
+    source, invite_id, invite_expiry_date, wx_union_id, is_distributor, invite_act_id, 
+    distributor_level, ali_user_id, device, invite_protect_date, look_collect_time, get_collect_gift, 
+    invite_group, unit_price, invite_time, scene
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from b2c_user
+    where user_id = #{userId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from b2c_user
+    where user_id = #{userId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.huice.model.old.OldUser">
+    insert into b2c_user (user_id, shop_id, username, 
+      user_pwd, user_cid, mobile, 
+      user_code, wx_openid, email, 
+      create_time, update_time, wechat, 
+      fanli_grade, user_grade, invite, 
+      invite_source, invitation_code, account, 
+      discount, discount_grade, del_flag, 
+      del_time, growth, score, 
+      source, invite_id, invite_expiry_date, 
+      wx_union_id, is_distributor, invite_act_id, 
+      distributor_level, ali_user_id, device, 
+      invite_protect_date, look_collect_time, get_collect_gift, 
+      invite_group, unit_price, invite_time, 
+      scene)
+    values (#{userId,jdbcType=INTEGER}, #{shopId,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, 
+      #{userPwd,jdbcType=VARCHAR}, #{userCid,jdbcType=VARCHAR}, #{mobile,jdbcType=VARCHAR}, 
+      #{userCode,jdbcType=VARCHAR}, #{wxOpenid,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, #{wechat,jdbcType=VARCHAR}, 
+      #{fanliGrade,jdbcType=INTEGER}, #{userGrade,jdbcType=INTEGER}, #{invite,jdbcType=INTEGER}, 
+      #{inviteSource,jdbcType=VARCHAR}, #{invitationCode,jdbcType=VARCHAR}, #{account,jdbcType=DECIMAL}, 
+      #{discount,jdbcType=INTEGER}, #{discountGrade,jdbcType=INTEGER}, #{delFlag,jdbcType=BIT}, 
+      #{delTime,jdbcType=TIMESTAMP}, #{growth,jdbcType=INTEGER}, #{score,jdbcType=INTEGER}, 
+      #{source,jdbcType=INTEGER}, #{inviteId,jdbcType=INTEGER}, #{inviteExpiryDate,jdbcType=DATE}, 
+      #{wxUnionId,jdbcType=VARCHAR}, #{isDistributor,jdbcType=TINYINT}, #{inviteActId,jdbcType=INTEGER}, 
+      #{distributorLevel,jdbcType=TINYINT}, #{aliUserId,jdbcType=VARCHAR}, #{device,jdbcType=VARCHAR}, 
+      #{inviteProtectDate,jdbcType=DATE}, #{lookCollectTime,jdbcType=TIMESTAMP}, #{getCollectGift,jdbcType=BIT}, 
+      #{inviteGroup,jdbcType=INTEGER}, #{unitPrice,jdbcType=DECIMAL}, #{inviteTime,jdbcType=TIMESTAMP}, 
+      #{scene,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.huice.model.old.OldUser">
+    insert into b2c_user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="shopId != null">
+        shop_id,
+      </if>
+      <if test="username != null">
+        username,
+      </if>
+      <if test="userPwd != null">
+        user_pwd,
+      </if>
+      <if test="userCid != null">
+        user_cid,
+      </if>
+      <if test="mobile != null">
+        mobile,
+      </if>
+      <if test="userCode != null">
+        user_code,
+      </if>
+      <if test="wxOpenid != null">
+        wx_openid,
+      </if>
+      <if test="email != null">
+        email,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="wechat != null">
+        wechat,
+      </if>
+      <if test="fanliGrade != null">
+        fanli_grade,
+      </if>
+      <if test="userGrade != null">
+        user_grade,
+      </if>
+      <if test="invite != null">
+        invite,
+      </if>
+      <if test="inviteSource != null">
+        invite_source,
+      </if>
+      <if test="invitationCode != null">
+        invitation_code,
+      </if>
+      <if test="account != null">
+        account,
+      </if>
+      <if test="discount != null">
+        discount,
+      </if>
+      <if test="discountGrade != null">
+        discount_grade,
+      </if>
+      <if test="delFlag != null">
+        del_flag,
+      </if>
+      <if test="delTime != null">
+        del_time,
+      </if>
+      <if test="growth != null">
+        growth,
+      </if>
+      <if test="score != null">
+        score,
+      </if>
+      <if test="source != null">
+        source,
+      </if>
+      <if test="inviteId != null">
+        invite_id,
+      </if>
+      <if test="inviteExpiryDate != null">
+        invite_expiry_date,
+      </if>
+      <if test="wxUnionId != null">
+        wx_union_id,
+      </if>
+      <if test="isDistributor != null">
+        is_distributor,
+      </if>
+      <if test="inviteActId != null">
+        invite_act_id,
+      </if>
+      <if test="distributorLevel != null">
+        distributor_level,
+      </if>
+      <if test="aliUserId != null">
+        ali_user_id,
+      </if>
+      <if test="device != null">
+        device,
+      </if>
+      <if test="inviteProtectDate != null">
+        invite_protect_date,
+      </if>
+      <if test="lookCollectTime != null">
+        look_collect_time,
+      </if>
+      <if test="getCollectGift != null">
+        get_collect_gift,
+      </if>
+      <if test="inviteGroup != null">
+        invite_group,
+      </if>
+      <if test="unitPrice != null">
+        unit_price,
+      </if>
+      <if test="inviteTime != null">
+        invite_time,
+      </if>
+      <if test="scene != null">
+        scene,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="shopId != null">
+        #{shopId,jdbcType=INTEGER},
+      </if>
+      <if test="username != null">
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="userPwd != null">
+        #{userPwd,jdbcType=VARCHAR},
+      </if>
+      <if test="userCid != null">
+        #{userCid,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null">
+        #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="userCode != null">
+        #{userCode,jdbcType=VARCHAR},
+      </if>
+      <if test="wxOpenid != null">
+        #{wxOpenid,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="wechat != null">
+        #{wechat,jdbcType=VARCHAR},
+      </if>
+      <if test="fanliGrade != null">
+        #{fanliGrade,jdbcType=INTEGER},
+      </if>
+      <if test="userGrade != null">
+        #{userGrade,jdbcType=INTEGER},
+      </if>
+      <if test="invite != null">
+        #{invite,jdbcType=INTEGER},
+      </if>
+      <if test="inviteSource != null">
+        #{inviteSource,jdbcType=VARCHAR},
+      </if>
+      <if test="invitationCode != null">
+        #{invitationCode,jdbcType=VARCHAR},
+      </if>
+      <if test="account != null">
+        #{account,jdbcType=DECIMAL},
+      </if>
+      <if test="discount != null">
+        #{discount,jdbcType=INTEGER},
+      </if>
+      <if test="discountGrade != null">
+        #{discountGrade,jdbcType=INTEGER},
+      </if>
+      <if test="delFlag != null">
+        #{delFlag,jdbcType=BIT},
+      </if>
+      <if test="delTime != null">
+        #{delTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="growth != null">
+        #{growth,jdbcType=INTEGER},
+      </if>
+      <if test="score != null">
+        #{score,jdbcType=INTEGER},
+      </if>
+      <if test="source != null">
+        #{source,jdbcType=INTEGER},
+      </if>
+      <if test="inviteId != null">
+        #{inviteId,jdbcType=INTEGER},
+      </if>
+      <if test="inviteExpiryDate != null">
+        #{inviteExpiryDate,jdbcType=DATE},
+      </if>
+      <if test="wxUnionId != null">
+        #{wxUnionId,jdbcType=VARCHAR},
+      </if>
+      <if test="isDistributor != null">
+        #{isDistributor,jdbcType=TINYINT},
+      </if>
+      <if test="inviteActId != null">
+        #{inviteActId,jdbcType=INTEGER},
+      </if>
+      <if test="distributorLevel != null">
+        #{distributorLevel,jdbcType=TINYINT},
+      </if>
+      <if test="aliUserId != null">
+        #{aliUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="device != null">
+        #{device,jdbcType=VARCHAR},
+      </if>
+      <if test="inviteProtectDate != null">
+        #{inviteProtectDate,jdbcType=DATE},
+      </if>
+      <if test="lookCollectTime != null">
+        #{lookCollectTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="getCollectGift != null">
+        #{getCollectGift,jdbcType=BIT},
+      </if>
+      <if test="inviteGroup != null">
+        #{inviteGroup,jdbcType=INTEGER},
+      </if>
+      <if test="unitPrice != null">
+        #{unitPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="inviteTime != null">
+        #{inviteTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="scene != null">
+        #{scene,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.huice.model.old.OldUser">
+    update b2c_user
+    <set>
+      <if test="shopId != null">
+        shop_id = #{shopId,jdbcType=INTEGER},
+      </if>
+      <if test="username != null">
+        username = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="userPwd != null">
+        user_pwd = #{userPwd,jdbcType=VARCHAR},
+      </if>
+      <if test="userCid != null">
+        user_cid = #{userCid,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null">
+        mobile = #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="userCode != null">
+        user_code = #{userCode,jdbcType=VARCHAR},
+      </if>
+      <if test="wxOpenid != null">
+        wx_openid = #{wxOpenid,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="wechat != null">
+        wechat = #{wechat,jdbcType=VARCHAR},
+      </if>
+      <if test="fanliGrade != null">
+        fanli_grade = #{fanliGrade,jdbcType=INTEGER},
+      </if>
+      <if test="userGrade != null">
+        user_grade = #{userGrade,jdbcType=INTEGER},
+      </if>
+      <if test="invite != null">
+        invite = #{invite,jdbcType=INTEGER},
+      </if>
+      <if test="inviteSource != null">
+        invite_source = #{inviteSource,jdbcType=VARCHAR},
+      </if>
+      <if test="invitationCode != null">
+        invitation_code = #{invitationCode,jdbcType=VARCHAR},
+      </if>
+      <if test="account != null">
+        account = #{account,jdbcType=DECIMAL},
+      </if>
+      <if test="discount != null">
+        discount = #{discount,jdbcType=INTEGER},
+      </if>
+      <if test="discountGrade != null">
+        discount_grade = #{discountGrade,jdbcType=INTEGER},
+      </if>
+      <if test="delFlag != null">
+        del_flag = #{delFlag,jdbcType=BIT},
+      </if>
+      <if test="delTime != null">
+        del_time = #{delTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="growth != null">
+        growth = #{growth,jdbcType=INTEGER},
+      </if>
+      <if test="score != null">
+        score = #{score,jdbcType=INTEGER},
+      </if>
+      <if test="source != null">
+        source = #{source,jdbcType=INTEGER},
+      </if>
+      <if test="inviteId != null">
+        invite_id = #{inviteId,jdbcType=INTEGER},
+      </if>
+      <if test="inviteExpiryDate != null">
+        invite_expiry_date = #{inviteExpiryDate,jdbcType=DATE},
+      </if>
+      <if test="wxUnionId != null">
+        wx_union_id = #{wxUnionId,jdbcType=VARCHAR},
+      </if>
+      <if test="isDistributor != null">
+        is_distributor = #{isDistributor,jdbcType=TINYINT},
+      </if>
+      <if test="inviteActId != null">
+        invite_act_id = #{inviteActId,jdbcType=INTEGER},
+      </if>
+      <if test="distributorLevel != null">
+        distributor_level = #{distributorLevel,jdbcType=TINYINT},
+      </if>
+      <if test="aliUserId != null">
+        ali_user_id = #{aliUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="device != null">
+        device = #{device,jdbcType=VARCHAR},
+      </if>
+      <if test="inviteProtectDate != null">
+        invite_protect_date = #{inviteProtectDate,jdbcType=DATE},
+      </if>
+      <if test="lookCollectTime != null">
+        look_collect_time = #{lookCollectTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="getCollectGift != null">
+        get_collect_gift = #{getCollectGift,jdbcType=BIT},
+      </if>
+      <if test="inviteGroup != null">
+        invite_group = #{inviteGroup,jdbcType=INTEGER},
+      </if>
+      <if test="unitPrice != null">
+        unit_price = #{unitPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="inviteTime != null">
+        invite_time = #{inviteTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="scene != null">
+        scene = #{scene,jdbcType=INTEGER},
+      </if>
+    </set>
+    where user_id = #{userId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.huice.model.old.OldUser">
+    update b2c_user
+    set shop_id = #{shopId,jdbcType=INTEGER},
+      username = #{username,jdbcType=VARCHAR},
+      user_pwd = #{userPwd,jdbcType=VARCHAR},
+      user_cid = #{userCid,jdbcType=VARCHAR},
+      mobile = #{mobile,jdbcType=VARCHAR},
+      user_code = #{userCode,jdbcType=VARCHAR},
+      wx_openid = #{wxOpenid,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      wechat = #{wechat,jdbcType=VARCHAR},
+      fanli_grade = #{fanliGrade,jdbcType=INTEGER},
+      user_grade = #{userGrade,jdbcType=INTEGER},
+      invite = #{invite,jdbcType=INTEGER},
+      invite_source = #{inviteSource,jdbcType=VARCHAR},
+      invitation_code = #{invitationCode,jdbcType=VARCHAR},
+      account = #{account,jdbcType=DECIMAL},
+      discount = #{discount,jdbcType=INTEGER},
+      discount_grade = #{discountGrade,jdbcType=INTEGER},
+      del_flag = #{delFlag,jdbcType=BIT},
+      del_time = #{delTime,jdbcType=TIMESTAMP},
+      growth = #{growth,jdbcType=INTEGER},
+      score = #{score,jdbcType=INTEGER},
+      source = #{source,jdbcType=INTEGER},
+      invite_id = #{inviteId,jdbcType=INTEGER},
+      invite_expiry_date = #{inviteExpiryDate,jdbcType=DATE},
+      wx_union_id = #{wxUnionId,jdbcType=VARCHAR},
+      is_distributor = #{isDistributor,jdbcType=TINYINT},
+      invite_act_id = #{inviteActId,jdbcType=INTEGER},
+      distributor_level = #{distributorLevel,jdbcType=TINYINT},
+      ali_user_id = #{aliUserId,jdbcType=VARCHAR},
+      device = #{device,jdbcType=VARCHAR},
+      invite_protect_date = #{inviteProtectDate,jdbcType=DATE},
+      look_collect_time = #{lookCollectTime,jdbcType=TIMESTAMP},
+      get_collect_gift = #{getCollectGift,jdbcType=BIT},
+      invite_group = #{inviteGroup,jdbcType=INTEGER},
+      unit_price = #{unitPrice,jdbcType=DECIMAL},
+      invite_time = #{inviteTime,jdbcType=TIMESTAMP},
+      scene = #{scene,jdbcType=INTEGER}
+    where user_id = #{userId,jdbcType=INTEGER}
+  </update>
+  <select id="selectAll"  resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from b2c_user
+    order by user_id asc
+  </select>
+
+  <insert id="insertBatch" parameterType="com.huice.model.old.OldUser">
+    insert into b2c_user (user_id, shop_id, username,
+      user_pwd, user_cid, mobile,
+      user_code, wx_openid, email,
+      create_time, update_time, wechat,
+      fanli_grade, user_grade, invite,
+      invite_source, invitation_code, account,
+      discount, discount_grade, del_flag,
+      del_time, growth, score,
+      source, invite_id, invite_expiry_date,
+      wx_union_id, is_distributor, invite_act_id,
+      distributor_level, ali_user_id, device,
+      invite_protect_date, look_collect_time, get_collect_gift,
+      invite_group, unit_price, invite_time,
+      scene)
+    values
+    <foreach collection="list" item="item" index="index" separator=",">
+    (#{userId,jdbcType=INTEGER}, #{shopId,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR},
+      #{userPwd,jdbcType=VARCHAR}, #{userCid,jdbcType=VARCHAR}, #{mobile,jdbcType=VARCHAR},
+      #{userCode,jdbcType=VARCHAR}, #{wxOpenid,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR},
+      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, #{wechat,jdbcType=VARCHAR},
+      #{fanliGrade,jdbcType=INTEGER}, #{userGrade,jdbcType=INTEGER}, #{invite,jdbcType=INTEGER},
+      #{inviteSource,jdbcType=VARCHAR}, #{invitationCode,jdbcType=VARCHAR}, #{account,jdbcType=DECIMAL},
+      #{discount,jdbcType=INTEGER}, #{discountGrade,jdbcType=INTEGER}, #{delFlag,jdbcType=BIT},
+      #{delTime,jdbcType=TIMESTAMP}, #{growth,jdbcType=INTEGER}, #{score,jdbcType=INTEGER},
+      #{source,jdbcType=INTEGER}, #{inviteId,jdbcType=INTEGER}, #{inviteExpiryDate,jdbcType=DATE},
+      #{wxUnionId,jdbcType=VARCHAR}, #{isDistributor,jdbcType=TINYINT}, #{inviteActId,jdbcType=INTEGER},
+      #{distributorLevel,jdbcType=TINYINT}, #{aliUserId,jdbcType=VARCHAR}, #{device,jdbcType=VARCHAR},
+      #{inviteProtectDate,jdbcType=DATE}, #{lookCollectTime,jdbcType=TIMESTAMP}, #{getCollectGift,jdbcType=BIT},
+      #{inviteGroup,jdbcType=INTEGER}, #{unitPrice,jdbcType=DECIMAL}, #{inviteTime,jdbcType=TIMESTAMP},
+      #{scene,jdbcType=INTEGER})
+    </foreach>
+  </insert>
+</mapper>
