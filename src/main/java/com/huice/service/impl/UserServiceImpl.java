@@ -7,6 +7,7 @@ import com.huice.model.now.NowUser;
 import com.huice.model.old.OldUser;
 import com.huice.service.BaseService;
 import com.huice.service.IUserService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,6 +15,7 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 
+@Slf4j
 @Service("iUserService")
 public class UserServiceImpl extends BaseService implements IUserService {
     @Autowired
@@ -37,6 +39,7 @@ public class UserServiceImpl extends BaseService implements IUserService {
         PageHelper.startPage(1,20);
         List<OldUser> oldUsers = oldUserMapper.selectAll();
         List<NowUser> nowList=new ArrayList<NowUser>();
+        log.info("查询旧数据");
         for (OldUser user:oldUsers) {
             NowUser nowUser=new NowUser();
             BeanUtils.copyProperties(user,nowUser);
@@ -45,10 +48,9 @@ public class UserServiceImpl extends BaseService implements IUserService {
             nowUser.setInvitationCode("");
             nowList.add(nowUser);
         }
-        dbNow();
+        log.info("插入新数据");
         for (NowUser user:nowList) {
             int insert = nowUserMapper.insert(user);
-            System.out.println(insert);
         }
 
     }
